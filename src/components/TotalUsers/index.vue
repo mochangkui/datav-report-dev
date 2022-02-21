@@ -1,7 +1,7 @@
 <template>
   <common-card title="累计用户数" value="1,087,503">
     <template>
-      <v-chart :style="{ width: '100%', height: '100%' }" :option="getOptions()" />
+      <vue-charts :style="{ width: '100%', height: '100%' }" :option="getOptions()" />
       <!-- <div id="total-users-chart" :style="{ width: '100%', height: '100%' }"></div> -->
     </template>
     <template v-slot:footer>

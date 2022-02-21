@@ -1,7 +1,7 @@
 <template>
   <common-card title="累计订单量" value="32,039,165">
     <template>
-      <v-chart :style="{ width: '100%', height: '100%' }" :option="getOptions()" />
+      <vue-charts :style="{ width: '100%', height: '100%' }" :option="getOptions()" />
       <!-- <div id="total-orders-chart" :style="{ width: '100%', height: '100%' }" /> -->
     </template>
     <template v-slot:footer>
