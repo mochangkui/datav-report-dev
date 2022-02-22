@@ -8,7 +8,7 @@ import VueECharts from 'vue-echarts'
 
 Vue.config.productionTip = false
 Vue.prototype.$echarts = echarts
-Vue.component('vue-charts', VueECharts)
+Vue.component('vue-echarts', VueECharts)
 
 new Vue({
   router,

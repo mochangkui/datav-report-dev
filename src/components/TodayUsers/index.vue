@@ -1,7 +1,7 @@
 <template>
   <common-card title="今日交易用户数" value="81,014">
     <template>
-      <vue-charts :style="{ width: '100%', height: '100%' }" :option="getOptions()" />
+      <vue-echarts :style="{ width: '100%', height: '100%' }" :option="getOptions()" />
       <!-- <div id="today-users-chart" :style="{ width: '100%', height: '100%' }"></div> -->
     </template>
     <template v-slot:footer>
