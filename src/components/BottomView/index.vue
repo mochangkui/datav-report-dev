@@ -125,7 +125,105 @@ export default {
     },
     onPageChange (page) {
       console.log(page)
+    },
+    renderPieChart () {
+      const mockData = [
+        {
+          legendname: '粉面粥店',
+          value: 98,
+          percent: '15.40',
+          name: '粉面粥店'
+        },
+        {
+          legendname: '小笼包',
+          value: 98,
+          percent: '15.40',
+          name: '小笼包'
+        },
+        {
+          legendname: '牛肉粉',
+          value: 98,
+          percent: '15.40',
+          name: '牛肉粉'
+        }
+      ]
+      this.categoryOptions = {
+        title: [{
+          text: '品类分布',
+          textStyle: {
+            fontSize: 14,
+            color: '#666'
+          },
+          left: 20,
+          top: 20
+        }, {
+          text: '累计订单量',
+          subtext: '234',
+          x: '34.5%',
+          y: '42.5%',
+          textStyle: {
+            fontSize: 14,
+            color: '#999'
+          },
+          subtextStyle: {
+            fontSize: 28,
+            color: '#333'
+          },
+          textAlign: 'center'
+        }],
+        series: [{
+          name: '品类分布',
+          type: 'pie',
+          data: mockData,
+          label: {
+            normal: {
+              show: true,
+              position: 'outside',
+              formatter: function (params) {
+                return params.data.legendname
+              }
+            }
+          },
+          center: ['35%', '50%'],
+          radius: ['45%', '60%'],
+          labelLine: {
+            normal: {
+              length: 5,
+              length2: 3,
+              smooth: true
+            }
+          },
+          clockwise: false,
+          itemStyle: {
+            borderWidth: 4,
+            borderColor: '#fff'
+          }
+        }],
+        legend: {
+          type: 'scroll',
+          orient: 'vertical',
+          height: 250,
+          left: '70%',
+          top: 'middle',
+          textStyle: {
+            color: '#8c8c8c'
+          }
+        },
+        tooltip: {
+          trigger: 'item',
+          formatter: function (params) {
+            const str = params.seriesName + '<br />' +
+              params.marker + params.data.legendname + '<br />' +
+              '数量：' + params.data.value + '<br />' +
+              '占比：' + params.data.percent + '%'
+            return str
+          }
+        }
+      }
     }
+  },
+  mounted () {
+    this.renderPieChart()
   }
 }
 </script>
@@ -136,6 +234,14 @@ export default {
     margin-top: 20px;
     .view {
       flex: 1;
+      width: 50%;
+      box-sizing: border-box;
+      &:first-child {
+        padding: 0 10px 0 0;
+      }
+      &:last-child {
+        padding: 0 0 0 10px;
+      }
       /deep/.el-card__header {
         padding: 0;
         .title-wrapper {
@@ -146,7 +252,7 @@ export default {
           box-sizing: border-box;
           font-size: 14px;
           font-weight: 500;
-          padding: 0 20px;
+          padding: 0 0 0 20px;
         }
       }
       .chart-wrapper {
@@ -173,6 +279,17 @@ export default {
             .echarts {
               height: 50px;
             }
+          }
+        }
+        .table-wrapper {
+          flex: 1;
+          margin-top: 20px;
+          padding: 0 20px 20px;
+
+          .el-pagination {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
           }
         }
       }
